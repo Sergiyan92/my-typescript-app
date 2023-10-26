@@ -1,11 +1,18 @@
-import PhoneBook from "./components/PhoneBook";
-// import Viget from "./components/Viget";
+import { Route, Routes } from "react-router-dom";
+import Navigation from "./components/Navigation";
+import PhonebookPage from "./pages/PhonebookPage";
+import FeedbackPage from "./pages/FeedbackPage";
+
 
 function App() {
   return (
     <>
-      {/* <Viget /> */}
-      <PhoneBook />
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<PhonebookPage />} />
+        <Route path="/feedback" element={<FeedbackPage/>}/>
+      </Routes>
+ 
     </>
   );
 }
