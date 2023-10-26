@@ -1,6 +1,12 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
 
+interface newContactProps {
+  id: string;
+  name: string;
+  number: string;
+}
+
 const PhoneBook = () => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -11,13 +17,13 @@ const PhoneBook = () => {
     { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
   ]);
 
-  const addContact = (newContact) => {
+  const addContact = (newContact: newContactProps) => {
     setContacts([...contacts, newContact]);
   };
   const deleteContact = (id: string) => {
     return setContacts(contacts.filter((contact) => contact.id !== id));
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     const existingContact = contacts.some(
       (contact) => contact.name.toLowerCase() === name.toLowerCase()
@@ -39,12 +45,15 @@ const PhoneBook = () => {
   };
 
   return (
-    <div className="container ml-auto mr-auto">
-      <h2>Phonebook</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Name</label>
+    <div className="container ml-auto mr-auto mt-10">
+      <h2 className=" text-center text-2xl font-bold mb-4">Phonebook</h2>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col   items-center mb-5"
+      >
+        <label className="mb-2">Name</label>
         <input
-          className="border"
+          className="border w-[500px] p-2 mb-2 rounded"
           type="text"
           name="name"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -52,9 +61,9 @@ const PhoneBook = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <label>Number</label>
+        <label className="mb-2">Number</label>
         <input
-          className="border"
+          className="border w-[500px] p-2 mb-2 rounded"
           type="tel"
           name="number"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -62,13 +71,25 @@ const PhoneBook = () => {
           onChange={(e) => setNumber(e.target.value)}
           required
         />
-        <button type="submit">Add Contact</button>
+        <button
+          className="p-2 border-none bg-purple-700 text-white rounded cursor-pointer"
+          type="submit"
+        >
+          Add Contact
+        </button>
       </form>
-      <ul>
+      <ul className="space-y-4">
         {contacts.map((contact) => (
-          <li key={contact.id}>
-            {contact.name} - {contact.number}
-            <button onClick={() => deleteContact(contact.id)}>Delete</button>
+          <li key={contact.id} className="flex items-center justify-between">
+            <p className="text-lg">
+              {contact.name} - {contact.number}
+            </p>
+            <button
+              className="px-4 py-2 bg-red-700 text-white rounded cursor-pointer"
+              onClick={() => deleteContact(contact.id)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
