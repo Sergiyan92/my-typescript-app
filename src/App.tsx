@@ -1,9 +1,11 @@
-import Viget from "./components/Viget";
+import PhoneBook from "./components/PhoneBook";
+// import Viget from "./components/Viget";
 
 function App() {
   return (
     <>
-      <Viget />
+      {/* <Viget /> */}
+      <PhoneBook />
     </>
   );
 }
