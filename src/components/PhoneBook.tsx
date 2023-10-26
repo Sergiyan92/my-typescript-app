@@ -10,13 +10,16 @@ interface newContactProps {
 const PhoneBook = () => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const [filter, setFilter] = useState("");
   const [contacts, setContacts] = useState([
     { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
     { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
     { id: "id-3", name: "Eden Clements", number: "645-17-79" },
     { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
   ]);
-
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
   const addContact = (newContact: newContactProps) => {
     setContacts([...contacts, newContact]);
   };
@@ -45,7 +48,7 @@ const PhoneBook = () => {
   };
 
   return (
-    <div className="container ml-auto mr-auto mt-10">
+    <div className="container ml-auto mr-auto mt-10 mb-10">
       <h2 className=" text-center text-2xl font-bold mb-4">Phonebook</h2>
       <form
         onSubmit={handleSubmit}
@@ -77,9 +80,19 @@ const PhoneBook = () => {
         >
           Add Contact
         </button>
+        <label className="mb-2 mt-4">Find contacts by name</label>
+        <input
+          className="border w-[500px] p-2 mb-2 rounded"
+          type="text"
+          name="filter"
+          placeholder="Search"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        />
       </form>
+
       <ul className="space-y-4">
-        {contacts.map((contact) => (
+        {filteredContacts.map((contact) => (
           <li key={contact.id} className="flex items-center justify-between">
             <p className="text-lg">
               {contact.name} - {contact.number}
