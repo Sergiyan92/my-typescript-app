@@ -67,7 +67,7 @@ const Images = () => {
     setSelectedImage("");
   };
   return (
-    <div>
+    <div className="flex  flex-col pb-6 w-full ml-auto mr-auto">
       <Searchbar onSubmit={handleSubmit} />
 
       <ImageGallery images={images} onClick={handleImageClick} />

@@ -3,8 +3,12 @@ interface ImageGalleryItemProps {
 }
 const ImageGalleryItem = ({ webformatURL }: ImageGalleryItemProps) => {
   return (
-    <li className="">
-      <img src={webformatURL} alt="" className="" />
+    <li className=" rounded shadow">
+      <img
+        src={webformatURL}
+        alt=""
+        className=" w-full h-[260px] object-cover transition-transform hover:transform cursor-zoom-in"
+      />
     </li>
   );
 };

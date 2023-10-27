@@ -14,14 +14,20 @@ const Searchbar = ({ onSubmit }: SearchbarProps) => {
     onSubmit(query);
   };
   return (
-    <header>
-      <form onSubmit={handleSubmit}>
-        <button type="submit" className="">
+    <header className="bg-[#1da1f2] pt-2 pb-2 pl-6">
+      <form
+        onSubmit={handleSubmit}
+        className="flex justify-center items-center"
+      >
+        <button
+          type="submit"
+          className="p-2 rounded-full border-none cursor-pointer bg-orange-600 text-white mr-5"
+        >
           <span className="">Search</span>
         </button>
 
         <input
-          className=""
+          className="p-2 mr-2 rounded border "
           type="text"
           autoComplete="off"
           autoFocus

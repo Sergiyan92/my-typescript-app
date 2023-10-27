@@ -28,9 +28,12 @@ const Modal = ({ onClose, largeImageURL }: ModalProps) => {
   };
 
   return (
-    <div className="" onClick={handleBackdrop}>
-      <div className="">
-        <img src={largeImageURL} alt="" />
+    <div
+      className=" flex justify-center items-center top-0 left-0 w-full h-full bg-[rgba(0, 0, 0, 0.8)] fixed"
+      onClick={handleBackdrop}
+    >
+      <div className=" relative w-11/12 h-5/6">
+        <img src={largeImageURL} alt="Large img" />
       </div>
     </div>
   );

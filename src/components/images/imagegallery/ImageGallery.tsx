@@ -10,7 +10,7 @@ type ImageGalleryProps = {
 };
 const ImageGallery = ({ images, onClick }: ImageGalleryProps) => {
   return (
-    <ul className="">
+    <ul className=" grid ml-auto mr-auto max-w-[(100vw - 48px)] grid-cols-4">
       {images.map((image) => (
         <li
           key={image.id}
