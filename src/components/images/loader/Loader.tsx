@@ -1,16 +1,16 @@
-import { Audio } from "react-loader-spinner";
+// import { Audio } from "react-loader-spinner";
 const Loader = () => {
   return (
     <div className="">
-      <Audio
+      {/* <Audio
         height="80"
         width="80"
         radius="9"
         color="green"
         ariaLabel="loading"
-        wrapperStyle
-        wrapperClass
-      />
+
+      /> */}
+      <h1>Loading...</h1>
     </div>
   );
 };
