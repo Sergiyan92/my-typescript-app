@@ -1,18 +1,17 @@
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import PhonebookPage from "./pages/PhonebookPage";
-import FeedbackPage from "./pages/FeedbackPage";
 
+import FeedbackPage from "./pages/FeedbackPage";
+import Images from "./components/images/Images";
 
 function App() {
   return (
     <>
       <Navigation />
       <Routes>
-        <Route path="/" element={<PhonebookPage />} />
-        <Route path="/feedback" element={<FeedbackPage/>}/>
+        <Route path="/" element={<Images />} />
+        <Route path="/feedback" element={<FeedbackPage />} />
       </Routes>
- 
     </>
   );
 }
