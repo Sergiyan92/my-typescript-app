@@ -25,19 +25,20 @@ const Images = () => {
 
   useEffect(() => {
     if (!query) return;
-    try {
-      const fetchImages = async () => {
-        setIsLoading(true);
+    const fetchImages = async () => {
+      setIsLoading(true);
+      try {
         const { imagesData, totalImages } = await getImages({ page, query });
         setImages((prevImages) => [...prevImages, ...imagesData]);
         setShowBtn(page < Math.ceil(totalImages / 12));
-      };
-      fetchImages();
-      setIsLoading(false);
-    } catch (error) {
-      const err = error as Error;
-      setImagesError(err.message);
-    }
+      } catch (error) {
+        const err = error as Error;
+        setImagesError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchImages();
   }, [page, query]);
 
   const handleSubmit = (query: string) => {
@@ -48,7 +49,7 @@ const Images = () => {
       setPage(1);
       setImages([]);
       setImagesError(null);
-      setIsLoading(true);
+
       setShowBtn(false);
     }
   };
@@ -70,15 +71,11 @@ const Images = () => {
     <div className="flex items-center flex-col pb-6 w-full ml-auto mr-auto">
       <Searchbar onSubmit={handleSubmit} />
 
-      {isLoading && (
-        <Loader
-          className="fixed top-[300px] left-[500px]"
-          speed="normal"
-          size="lg"
-          content="Loading..."
-        />
+      {isLoading ? (
+        <Loader size="lg" speed="normal" content="Loading..." />
+      ) : (
+        <ImageGallery images={images} onClick={handleImageClick} />
       )}
-      <ImageGallery images={images} onClick={handleImageClick} />
 
       {showBtn && <Button onClick={handleLoadMore}>Load More</Button>}
       {error && <>Sorry. {error} ... 😭</>}
