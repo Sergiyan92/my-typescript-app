@@ -8,6 +8,7 @@ function App() {
   return (
     <>
       <Navigation />
+
       <Routes>
         <Route path="/" element={<Images />} />
         <Route path="/feedback" element={<FeedbackPage />} />

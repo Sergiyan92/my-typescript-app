@@ -33,11 +33,10 @@ const Images = () => {
         setShowBtn(page < Math.ceil(totalImages / 12));
       };
       fetchImages();
+      setIsLoading(false);
     } catch (error) {
       const err = error as Error;
       setImagesError(err.message);
-    } finally {
-      setIsLoading(false);
     }
   }, [page, query]);
 
@@ -49,12 +48,13 @@ const Images = () => {
       setPage(1);
       setImages([]);
       setImagesError(null);
-      setIsLoading(false);
+      setIsLoading(true);
       setShowBtn(false);
     }
   };
 
   const handleLoadMore = () => {
+    setIsLoading(true);
     setPage((prevPage) => prevPage + 1);
   };
 
@@ -73,11 +73,10 @@ const Images = () => {
 
       {isLoading && (
         <Loader
-          backdrop
+          className=" absolute top-[300px] left-[500px]"
           speed="normal"
           size="lg"
           content="Loading..."
-          vertical
         />
       )}
       <ImageGallery images={images} onClick={handleImageClick} />
