@@ -13,6 +13,9 @@ const Navigation = () => {
         <Link to="/phonebook" className="mr-2">
           Pnonebook
         </Link>
+        <Link to="/movies" className="mr-2">
+          Movies
+        </Link>
       </span>
     </nav>
   );

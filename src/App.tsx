@@ -2,8 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation";
 
 import FeedbackPage from "./pages/FeedbackPage";
-import Images from "./components/images/Images";
 import PhonebookPage from "./pages/PhonebookPage";
+import ImagePage from "./pages/ImagePage";
+import MoviesPage from "./pages/MoviesPage";
 
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
       <Navigation />
 
       <Routes>
-        <Route path="/" element={<Images />} />
+        <Route path="/" element={<ImagePage />} />
         <Route path="/phonebook" element={<PhonebookPage />} />
         <Route path="/feedback" element={<FeedbackPage />} />
+        <Route path="/movies" element={<MoviesPage />} />
       </Routes>
     </>
   );
