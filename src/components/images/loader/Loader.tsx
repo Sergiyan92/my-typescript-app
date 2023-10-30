@@ -10,7 +10,7 @@ const Loader = () => {
         ariaLabel="loading"
 
       /> */}
-      <h1>Loading...</h1>
+      <p className="">Loading...</p>
     </div>
   );
 };

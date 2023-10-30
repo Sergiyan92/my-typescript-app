@@ -5,7 +5,10 @@ interface ButtonProps {
 }
 const Button = ({ onClick, children }: ButtonProps) => {
   return (
-    <button className="" onClick={onClick}>
+    <button
+      className="animate-bounce rounded p-1 text-white bg-indigo-600"
+      onClick={onClick}
+    >
       {children}
     </button>
   );

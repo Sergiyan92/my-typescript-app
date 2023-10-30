@@ -7,7 +7,7 @@ const ImageGalleryItem = ({ webformatURL }: ImageGalleryItemProps) => {
       <img
         src={webformatURL}
         alt=""
-        className=" w-full h-[260px] object-cover transition-transform hover:transform cursor-zoom-in"
+        className=" w-[260px] h-[260px] object-cover transition-transform hover:transform cursor-zoom-in"
       />
     </li>
   );

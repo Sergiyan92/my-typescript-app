@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import "rsuite/dist/rsuite.min.css";
+import { Loader } from "rsuite";
 import Searchbar from "./searchbar/Searchbar";
 import ImageGallery from "./imagegallery/ImageGallery";
 import Button from "./button/Button";
-import Loader from "./loader/Loader";
 import Modal from "./modal/Modal";
 import { getImages } from "../../service/service";
 
@@ -67,12 +68,19 @@ const Images = () => {
     setSelectedImage("");
   };
   return (
-    <div className="flex  flex-col pb-6 w-full ml-auto mr-auto">
+    <div className="flex items-center flex-col pb-6 w-full ml-auto mr-auto">
       <Searchbar onSubmit={handleSubmit} />
 
+      {isLoading && (
+        <Loader
+          backdrop
+          speed="normal"
+          size="lg"
+          content="Loading..."
+          vertical
+        />
+      )}
       <ImageGallery images={images} onClick={handleImageClick} />
-
-      {isLoading && <Loader />}
 
       {showBtn && <Button onClick={handleLoadMore}>Load More</Button>}
       {error && <>Sorry. {error} ... 😭</>}
