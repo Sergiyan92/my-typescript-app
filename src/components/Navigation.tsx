@@ -5,10 +5,13 @@ const Navigation = () => {
       <span className="font-bold">React-Typescript</span>
       <span>
         <Link to="/" className="mr-2">
-          Pnonebook
+          Images
         </Link>
         <Link to="/feedback" className="mr-2">
           Feedback
+        </Link>
+        <Link to="/phonebook" className="mr-2">
+          Pnonebook
         </Link>
       </span>
     </nav>

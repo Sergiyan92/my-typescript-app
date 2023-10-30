@@ -54,7 +54,6 @@ const Images = () => {
   };
 
   const handleLoadMore = () => {
-    setIsLoading(true);
     setPage((prevPage) => prevPage + 1);
   };
 
@@ -73,7 +72,7 @@ const Images = () => {
 
       {isLoading && (
         <Loader
-          className=" absolute top-[300px] left-[500px]"
+          className="fixed top-[300px] left-[500px]"
           speed="normal"
           size="lg"
           content="Loading..."

@@ -27,7 +27,7 @@ const Searchbar = ({ onSubmit }: SearchbarProps) => {
         </button>
 
         <input
-          className="p-2 mr-2 rounded border "
+          className="p-2 mr-2 rounded border outline-none "
           type="text"
           autoComplete="off"
           autoFocus
