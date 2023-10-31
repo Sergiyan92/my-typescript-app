@@ -1,4 +1,4 @@
-import defaultImg from "../../../assets/default.png";
+import defaultImg from "../../../../assets/default.png";
 type Card = {
   backdrop_path: string | null;
   original_title: string;

@@ -1,7 +1,7 @@
-import Movie from "../components/movies/Movie";
+import MoviesPage from "../components/movies/pages/movies/MoviesPage";
 
-const MoviesPage = () => {
-  return <Movie />;
+const Films = () => {
+  return <MoviesPage />;
 };
 
-export default MoviesPage;
+export default Films;

@@ -4,7 +4,7 @@ const Navigation = () => {
     <nav className=" sticky top-0 h-[50px]  flex justify-between px-5 bg-gray-500 items-center text-white">
       <span className="font-bold">React-Typescript</span>
       <span>
-        <Link to="/" className="mr-2">
+        <Link to="/images" className="mr-2">
           Images
         </Link>
         <Link to="/feedback" className="mr-2">
@@ -13,7 +13,7 @@ const Navigation = () => {
         <Link to="/phonebook" className="mr-2">
           Pnonebook
         </Link>
-        <Link to="/movies" className="mr-2">
+        <Link to="/films" className="mr-2">
           Movies
         </Link>
       </span>

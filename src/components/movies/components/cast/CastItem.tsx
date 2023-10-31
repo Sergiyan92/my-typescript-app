@@ -1,4 +1,4 @@
-import defaultImg from "../../../assets/noicon.png";
+import defaultImg from "../../../../assets/noicon.png";
 
 type CastItemProps = {
   profile_path: string | null;
