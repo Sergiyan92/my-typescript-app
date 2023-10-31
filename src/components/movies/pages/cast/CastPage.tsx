@@ -8,7 +8,6 @@ interface Cast {
   profile_path: string | null;
   name: string;
   character: string;
-  // Додайте інші властивості об'єкту Cast
 }
 
 interface CastData {

@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllmovies } from "../../../../service/service";
+
 type Movie = {
   id: number;
   title: string;
 };
-const Trending = () => {
-  const [trending, setTrending] = useState<Movie[]>([]);
+
+type TrendingProps = {
+  trending: Movie[];
+};
+
+const Trending = ({ trending }: TrendingProps) => {
   const [error, setMoviesError] = useState<string | null>(null);
 
   useEffect(() => {
     try {
       const fetchMovies = async () => {
-        const { trendingData } = await getAllmovies();
-        setTrending(() => [...trendingData]);
+        await getAllmovies();
+        // trendingData is not used in the code, so it can be removed
       };
       fetchMovies();
     } catch (error) {
@@ -24,6 +29,7 @@ const Trending = () => {
       }
     }
   }, []);
+
   return (
     <ul className="">
       {trending.map((movie) => (
@@ -35,4 +41,5 @@ const Trending = () => {
     </ul>
   );
 };
+
 export default Trending;
