@@ -1,9 +1,9 @@
-import CardItem from "../../components/card/CardItem";
-import { IfoItem } from "../../components/info/InfoItem";
-import { useEffect, useRef, useState } from "react";
+import CardItem from '../../components/card/CardItem';
+import { IfoItem } from '../../components/info/InfoItem';
+import { useEffect, useRef, useState } from 'react';
 
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import { getMovieId } from "../../../../service/service";
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { getMovieId } from '../../../../service/service';
 type MovieDetails = {
   backdrop_path: string | null;
   original_title: string;
@@ -21,26 +21,28 @@ const MoviesDetails = () => {
   const [details, setDetails] = useState<MovieDetails | null>(null);
 
   const location = useLocation();
-  const back = useRef(location.state ?? "/");
+  const back = useRef(location.state ?? '/');
 
   useEffect(() => {
     if (movieId) {
       const id = parseInt(movieId);
       getMovieId(id)
-        .then((data) => setDetails(data))
-        .catch((error) => console.log(error));
+        .then(data => setDetails(data))
+        .catch(error => console.log(error));
     }
   }, [movieId]);
 
   if (!details) return;
   return (
-    <div>
-      <Link className="" to={back.current}>
+    <div className=" mx-auto p-4">
+      <Link
+        className="text-blue-500 text-lg hover:underline mb-4 block"
+        to={back.current}
+      >
         Back
       </Link>
       <CardItem card={details} />
       <IfoItem />
-
       <Outlet />
     </div>
   );

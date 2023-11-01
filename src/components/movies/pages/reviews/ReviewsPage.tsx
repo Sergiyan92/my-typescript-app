@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getMovieIdReviews } from "../../../../service/service";
-import Review from "../../components/review/Review";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getMovieIdReviews } from '../../../../service/service';
+import Review from '../../components/review/Review';
 
 interface Reviews {
   id: number;
@@ -20,16 +20,22 @@ const Reviews = () => {
     if (movieId) {
       const id = parseInt(movieId);
       getMovieIdReviews(id)
-        .then((response) => setData(response))
-        .catch((error) => console.error(error));
+        .then(response => setData(response))
+        .catch(error => console.error(error));
     }
   }, [movieId]);
   return (
-    <div className="">
+    <div className="max-w-2xl mx-auto p-4">
       {!data?.results.length ? (
-        <p>We don't have ani reviews for this movie</p>
+        <p className="text-gray-800 text-xl text-center">
+          We don't have any reviews for this movie
+        </p>
       ) : (
-        data.results.map((review) => <Review key={review.id} review={review} />)
+        <div className="space-y-4">
+          {data.results.map(review => (
+            <Review key={review.id} review={review} />
+          ))}
+        </div>
       )}
     </div>
   );

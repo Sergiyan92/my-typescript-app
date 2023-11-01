@@ -30,7 +30,11 @@ export const getMovies = async (query: string) => {
   const response = await axios(url, options);
   const movies: Movie[] = response.data.results;
   return {
-    movieData: movies.map(({ id, title }: Movie) => ({ id, title })),
+    movieData: movies.map(({ id, title, poster_path }: Movie) => ({
+      id,
+      title,
+      poster_path,
+    })),
   };
 };
 

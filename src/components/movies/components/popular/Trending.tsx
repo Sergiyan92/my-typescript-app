@@ -32,7 +32,7 @@ const Trending = ({ trending }: TrendingProps) => {
   }, []);
 
   return (
-    <ul className="flex flex-wrap pl-5 pr-5 justify-between ">
+    <ul className="flex flex-wrap pl-5 pr-5 justify-between">
       {trending.map(movie => {
         return (
           <li
