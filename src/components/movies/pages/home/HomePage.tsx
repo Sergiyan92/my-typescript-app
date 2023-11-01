@@ -1,9 +1,10 @@
-import Trending from "../../components/popular/Trending";
-import { useEffect, useState } from "react";
-import { getAllmovies } from "../../../../service/service";
+import Trending from '../../components/popular/Trending';
+import { useEffect, useState } from 'react';
+import { getAllmovies } from '../../../../service/service';
 interface Movie {
   id: number;
   title: string;
+  poster_path: string;
 }
 interface TrendingData {
   trendingData: Movie[]; // Замініть `any` на відповідний тип, якщо відомо
@@ -25,7 +26,9 @@ const Home = () => {
 
   return (
     <>
-      <h2>Trending today</h2>
+      <h2 className="text-center text-2xl pt-5 pb-5 text-black font-bold">
+        Trending today
+      </h2>
       <Trending trending={trending} />
     </>
   );

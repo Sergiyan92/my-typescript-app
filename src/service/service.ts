@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 interface getImageProps {
   page: number;
@@ -12,16 +12,17 @@ interface imagesData {
 type Movie = {
   id: number;
   title: string;
+  poster_path: string;
 };
 axios.defaults.baseURL =
-  "https://pixabay.com/api/?key=36214918-c54bf3212caa76f3a1fc6176b&image_type=photo&orientation=horizontal";
+  'https://pixabay.com/api/?key=36214918-c54bf3212caa76f3a1fc6176b&image_type=photo&orientation=horizontal';
 
 const options = {
-  method: "GET",
+  method: 'GET',
   headers: {
-    accept: "application/json",
+    accept: 'application/json',
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzBjM2Q3N2ZiNjkwMzViNDdlYTRjYmUwYmYzZWM1OSIsInN1YiI6IjY0N2M4MmZlY2Y0YjhiMDBjM2QyYjEyNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GuJ4Ukill7vzS2qgRjDdTLXHToQTjbtbSSxv_l3b6Pc",
+      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzBjM2Q3N2ZiNjkwMzViNDdlYTRjYmUwYmYzZWM1OSIsInN1YiI6IjY0N2M4MmZlY2Y0YjhiMDBjM2QyYjEyNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GuJ4Ukill7vzS2qgRjDdTLXHToQTjbtbSSxv_l3b6Pc',
   },
 };
 export const getMovies = async (query: string) => {
@@ -34,12 +35,16 @@ export const getMovies = async (query: string) => {
 };
 
 export const getAllmovies = async () => {
-  const url = "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
+  const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
   const response = await axios(url, options);
   const trending = response.data.results;
 
   return {
-    trendingData: trending.map(({ id, title }: Movie) => ({ id, title })),
+    trendingData: trending.map(({ id, title, poster_path }: Movie) => ({
+      id,
+      title,
+      poster_path,
+    })),
   };
 };
 
