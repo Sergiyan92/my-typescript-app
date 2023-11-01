@@ -8,13 +8,13 @@ const Heder = () => {
           className="text-red-800 font-bold text-lg hover:text-blue-600 no-underline"
           to="/"
         >
-          Trending
+          Top-20
         </NavLink>
         <NavLink
           className="text-red-800 font-bold text-lg hover:text-blue-600 no-underline"
           to="/movies"
         >
-          Search Movies
+          Search-Movies
         </NavLink>
       </nav>
       <Outlet />
